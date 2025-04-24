@@ -1,16 +1,9 @@
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-gray-900 font-sans">
-      <header className="p-6 flex flex-col md:flex-row md:justify-between items-center gap-4 md:gap-0 shadow-sm">
-        <div className="flex items-center space-x-4">
-          <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-10 h-10" />
-          <h1 className="text-2xl font-semibold tracking-tight">Rumalia</h1>
-        </div>
-        <nav className="flex flex-wrap justify-center gap-4 md:gap-6">
-          <a href="#inmuebles" className="hover:underline">Inmuebles</a>
-          <a href="#contacto" className="hover:underline">Contacto</a>
-          <a href="#legal" className="hover:underline">Legal</a>
-        </nav>
+      <header className="p-6 flex items-center gap-3 shadow-sm">
+        <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-8 h-8" />
+        <h1 className="text-2xl font-semibold tracking-tight">Rumalia</h1>
       </header>
 
       {/* Hero section */}
