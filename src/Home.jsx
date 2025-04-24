@@ -23,7 +23,7 @@ export default function Home() {
         <h3 className="text-3xl font-semibold mb-8 text-center">Inmuebles destacados</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           <div className="border rounded-xl overflow-hidden shadow hover:shadow-md transition">
-            <img src="/piso-chamberi.jpg" alt="Piso en Chamberí" className="w-full h-48 object-cover" />
+            <img src="/25903C74-8028-40CA-8F3E-203A11651ED8.png" alt="Piso en Chamberí" className="w-full h-48 object-cover" />
             <div className="p-4">
               <h4 className="text-xl font-semibold mb-2">Piso en Chamberí</h4>
               <p className="text-gray-600 mb-2">2 habitaciones · 1 baño · 74 m²</p>
