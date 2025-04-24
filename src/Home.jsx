@@ -1,69 +1,70 @@
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white text-gray-900 font-sans">
-      <header className="p-6 flex items-center gap-3 shadow-sm">
-        <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-8 h-8" />
-        <h1 className="text-2xl font-semibold tracking-tight">Rumalia</h1>
+    <main className="min-h-screen bg-[#f5f5f7] text-[#1d1d1f] font-sans">
+      <header className="p-5 flex items-center gap-2 shadow-sm bg-white">
+        <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-6 h-6" />
+        <h1 className="text-xl font-semibold tracking-tight">Rumalia</h1>
       </header>
 
       {/* Hero section */}
-      <section className="text-center py-24 px-6 bg-gray-50">
-        <h2 className="text-4xl font-bold mb-4">Conecta con tu agente inmobiliario en Madrid</h2>
-        <p className="text-lg text-gray-600 max-w-xl mx-auto mb-8">
+      <section className="text-center py-24 px-6">
+        <h2 className="text-5xl font-bold mb-4 leading-tight">Conecta con tu agente inmobiliario en Madrid</h2>
+        <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-10">
           En Rumalia te ayudamos a vender o alquilar tu vivienda con atención personalizada, claridad y sin complicaciones.
         </p>
-        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
-          <a href="#agente" className="bg-black text-white px-6 py-3 rounded-xl shadow hover:bg-gray-800">Habla con un agente</a>
-          <a href="#inmuebles" className="px-6 py-3 rounded-xl border border-black text-black hover:bg-gray-100">Ver inmuebles</a>
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <a href="#agente" className="bg-[#0071e3] text-white px-7 py-3 rounded-full font-medium hover:bg-[#005bb5] transition">Habla con un agente</a>
+          <a href="#inmuebles" className="px-7 py-3 rounded-full border border-[#0071e3] text-[#0071e3] font-medium hover:bg-[#e6f0fb] transition">Ver inmuebles</a>
         </div>
       </section>
 
-      {/* Sección Inmuebles */}
-      <section id="inmuebles" className="py-20 px-6 bg-gray-50">
+      {/* Inmuebles */}
+      <section id="inmuebles" className="py-20 px-6">
         <h3 className="text-3xl font-semibold mb-8 text-center">Inmuebles destacados</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-          <div className="border rounded-xl overflow-hidden shadow hover:shadow-md transition">
-            <img src="/25903C74-8028-40CA-8F3E-203A11651ED8.png" alt="Piso en Chamberí" className="w-full h-48 object-cover" />
-            <div className="p-4">
-              <h4 className="text-xl font-semibold mb-2">Piso en Chamberí</h4>
-              <p className="text-gray-600 mb-2">2 habitaciones · 1 baño · 74 m²</p>
-              <p className="font-bold text-lg">390.000 €</p>
+          {[{
+            img: "/piso-chamberi.jpg",
+            title: "Piso en Chamberí",
+            details: "2 habitaciones · 1 baño · 74 m²",
+            price: "390.000 €"
+          }, {
+            img: "/piso-salamanca.jpg",
+            title: "Ático en Salamanca",
+            details: "3 habitaciones · 2 baños · 120 m²",
+            price: "720.000 €"
+          }, {
+            img: "/piso-tetuan.jpg",
+            title: "Estudio en Tetuán",
+            details: "1 habitación · 1 baño · 45 m²",
+            price: "195.000 €"
+          }].map((piso, i) => (
+            <div key={i} className="rounded-3xl overflow-hidden shadow bg-white">
+              <img src={piso.img} alt={piso.title} className="w-full h-56 object-cover" />
+              <div className="p-5">
+                <h4 className="text-lg font-semibold mb-1">{piso.title}</h4>
+                <p className="text-sm text-gray-600 mb-2">{piso.details}</p>
+                <p className="text-base font-semibold">{piso.price}</p>
+              </div>
             </div>
-          </div>
-          <div className="border rounded-xl overflow-hidden shadow hover:shadow-md transition">
-            <img src="/E4D67085-C242-4608-8F52-7234B683788B.png" alt="Piso en Salamanca" className="w-full h-48 object-cover" />
-            <div className="p-4">
-              <h4 className="text-xl font-semibold mb-2">Ático en Salamanca</h4>
-              <p className="text-gray-600 mb-2">3 habitaciones · 2 baños · 120 m²</p>
-              <p className="font-bold text-lg">720.000 €</p>
-            </div>
-          </div>
-          <div className="border rounded-xl overflow-hidden shadow hover:shadow-md transition">
-            <img src="/B8E1E4C7-B8C4-4469-985D-AA01F09AEFF4.png" alt="Piso en Tetuán" className="w-full h-48 object-cover" />
-            <div className="p-4">
-              <h4 className="text-xl font-semibold mb-2">Estudio en Tetuán</h4>
-              <p className="text-gray-600 mb-2">1 habitación · 1 baño · 45 m²</p>
-              <p className="font-bold text-lg">195.000 €</p>
-            </div>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* Sección Habla con un agente (formulario) */}
-      <section id="agente" className="py-20 px-6 max-w-4xl mx-auto">
+      {/* Formulario */}
+      <section id="agente" className="py-20 px-6 max-w-2xl mx-auto">
         <h3 className="text-3xl font-semibold mb-4 text-center">Habla con un agente</h3>
-        <p className="text-gray-700 mb-6 text-center">¿Quieres vender o alquilar tu casa? ¿Necesitas ayuda para encontrar una vivienda? Rellena el siguiente formulario y te contactaremos lo antes posible.</p>
-        <form className="space-y-4 max-w-md mx-auto">
+        <p className="text-gray-700 mb-6 text-center">Rellena el formulario y te contactaremos lo antes posible.</p>
+        <form className="space-y-4">
           <input type="text" placeholder="Nombre" className="w-full border px-4 py-2 rounded-xl" />
           <input type="email" placeholder="Correo electrónico" className="w-full border px-4 py-2 rounded-xl" />
           <input type="tel" placeholder="Teléfono" className="w-full border px-4 py-2 rounded-xl" />
           <textarea placeholder="¿En qué podemos ayudarte?" className="w-full border px-4 py-2 rounded-xl" rows={4}></textarea>
-          <button className="bg-black text-white px-6 py-3 rounded-xl shadow hover:bg-gray-800" type="submit">Enviar</button>
+          <button className="bg-[#0071e3] text-white px-6 py-3 rounded-full hover:bg-[#005bb5] transition" type="submit">Enviar</button>
         </form>
       </section>
 
-      {/* Sección de Textos legales */}
-      <section id="legal" className="py-16 px-6 max-w-4xl mx-auto text-sm text-gray-600">
+      {/* Legales */}
+      <section id="legal" className="py-16 px-6 max-w-4xl mx-auto text-sm text-gray-500">
         <h3 className="text-xl font-semibold mb-4">Textos legales</h3>
         <p className="mb-4">
           <strong>Aviso legal:</strong> Rumalia es una marca comercial registrada. Esta web tiene como finalidad la promoción de servicios inmobiliarios. El uso de este sitio implica la aceptación de nuestras condiciones legales. Todos los derechos reservados.
