@@ -31,7 +31,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border rounded-xl overflow-hidden shadow hover:shadow-md transition">
-            <img src="/25903C74-8028-40CA-8F3E-203A11651ED8.png" alt="Piso en Salamanca" className="w-full h-48 object-cover" />
+            <img src="/E4D67085-C242-4608-8F52-7234B683788B.png" alt="Piso en Salamanca" className="w-full h-48 object-cover" />
             <div className="p-4">
               <h4 className="text-xl font-semibold mb-2">Ático en Salamanca</h4>
               <p className="text-gray-600 mb-2">3 habitaciones · 2 baños · 120 m²</p>
