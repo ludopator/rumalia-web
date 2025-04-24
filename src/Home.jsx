@@ -25,13 +25,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sección Habla con un agente */}
-      <section id="agente" className="py-20 px-6 bg-white text-center">
-        <h3 className="text-3xl font-semibold mb-4">Habla con un agente</h3>
-        <p className="text-gray-700 max-w-2xl mx-auto mb-6">
-          ¿Quieres vender o alquilar tu casa? ¿Necesitas asesoramiento personalizado para encontrar un piso? Contacta con uno de nuestros agentes especializados en Madrid. Estamos para ayudarte.
-        </p>
-        <a href="#contacto" className="inline-block bg-black text-white px-6 py-3 rounded-xl hover:bg-gray-800">Contactar ahora</a>
+      {/* Sección Habla con un agente (formulario) */}
+      <section id="agente" className="py-20 px-6 max-w-4xl mx-auto">
+        <h3 className="text-3xl font-semibold mb-4 text-center">Habla con un agente</h3>
+        <p className="text-gray-700 mb-6 text-center">¿Quieres vender o alquilar tu casa? ¿Necesitas ayuda para encontrar una vivienda? Rellena el siguiente formulario y te contactaremos lo antes posible.</p>
+        <form className="space-y-4 max-w-md mx-auto">
+          <input type="text" placeholder="Nombre" className="w-full border px-4 py-2 rounded-xl" />
+          <input type="email" placeholder="Correo electrónico" className="w-full border px-4 py-2 rounded-xl" />
+          <input type="tel" placeholder="Teléfono" className="w-full border px-4 py-2 rounded-xl" />
+          <textarea placeholder="¿En qué podemos ayudarte?" className="w-full border px-4 py-2 rounded-xl" rows={4}></textarea>
+          <button className="bg-black text-white px-6 py-3 rounded-xl shadow hover:bg-gray-800" type="submit">Enviar</button>
+        </form>
       </section>
 
       {/* Sección de Textos legales */}
