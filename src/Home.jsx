@@ -1,12 +1,12 @@
 export default function Home() {
   return (
     <main className="min-h-screen bg-white text-gray-900 font-sans">
-      <header className="p-6 flex justify-between items-center shadow-sm">
+      <header className="p-6 flex flex-col md:flex-row md:justify-between items-center gap-4 md:gap-0 shadow-sm">
         <div className="flex items-center space-x-4">
           <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-10 h-10" />
           <h1 className="text-2xl font-semibold tracking-tight">Rumalia</h1>
         </div>
-        <nav className="space-x-6">
+        <nav className="flex flex-wrap justify-center gap-4 md:gap-6">
           <a href="#inmuebles" className="hover:underline">Inmuebles</a>
           <a href="#contacto" className="hover:underline">Contacto</a>
           <a href="#legal" className="hover:underline">Legal</a>
@@ -19,7 +19,7 @@ export default function Home() {
         <p className="text-lg text-gray-600 max-w-xl mx-auto mb-8">
           En Rumalia te ayudamos a vender o alquilar tu vivienda con atención personalizada, claridad y sin complicaciones.
         </p>
-        <div className="space-x-4">
+        <div className="flex flex-col md:flex-row items-center justify-center gap-4">
           <a href="#agente" className="bg-black text-white px-6 py-3 rounded-xl shadow hover:bg-gray-800">Habla con un agente</a>
           <a href="#inmuebles" className="px-6 py-3 rounded-xl border border-black text-black hover:bg-gray-100">Ver inmuebles</a>
         </div>
