@@ -39,7 +39,7 @@ export default function Home() {
             </div>
           </div>
           <div className="border rounded-xl overflow-hidden shadow hover:shadow-md transition">
-            <img src="/piso-tetuan.jpg" alt="Piso en Tetuán" className="w-full h-48 object-cover" />
+            <img src="/B8E1E4C7-B8C4-4469-985D-AA01F09AEFF4.png" alt="Piso en Tetuán" className="w-full h-48 object-cover" />
             <div className="p-4">
               <h4 className="text-xl font-semibold mb-2">Estudio en Tetuán</h4>
               <p className="text-gray-600 mb-2">1 habitación · 1 baño · 45 m²</p>
