@@ -18,6 +18,37 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Sección Inmuebles */}
+      <section id="inmuebles" className="py-20 px-6 bg-gray-50">
+        <h3 className="text-3xl font-semibold mb-8 text-center">Inmuebles destacados</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div className="border rounded-xl overflow-hidden shadow hover:shadow-md transition">
+            <img src="/piso-chamberi.jpg" alt="Piso en Chamberí" className="w-full h-48 object-cover" />
+            <div className="p-4">
+              <h4 className="text-xl font-semibold mb-2">Piso en Chamberí</h4>
+              <p className="text-gray-600 mb-2">2 habitaciones · 1 baño · 74 m²</p>
+              <p className="font-bold text-lg">390.000 €</p>
+            </div>
+          </div>
+          <div className="border rounded-xl overflow-hidden shadow hover:shadow-md transition">
+            <img src="/piso-salamanca.jpg" alt="Piso en Salamanca" className="w-full h-48 object-cover" />
+            <div className="p-4">
+              <h4 className="text-xl font-semibold mb-2">Ático en Salamanca</h4>
+              <p className="text-gray-600 mb-2">3 habitaciones · 2 baños · 120 m²</p>
+              <p className="font-bold text-lg">720.000 €</p>
+            </div>
+          </div>
+          <div className="border rounded-xl overflow-hidden shadow hover:shadow-md transition">
+            <img src="/piso-tetuan.jpg" alt="Piso en Tetuán" className="w-full h-48 object-cover" />
+            <div className="p-4">
+              <h4 className="text-xl font-semibold mb-2">Estudio en Tetuán</h4>
+              <p className="text-gray-600 mb-2">1 habitación · 1 baño · 45 m²</p>
+              <p className="font-bold text-lg">195.000 €</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Sección Habla con un agente (formulario) */}
       <section id="agente" className="py-20 px-6 max-w-4xl mx-auto">
         <h3 className="text-3xl font-semibold mb-4 text-center">Habla con un agente</h3>
