@@ -51,7 +51,7 @@ export default function Home() {
         <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
           En Rumalia te ayudamos a vender o alquilar tu vivienda con atención personalizada, claridad y sin complicaciones.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
+        <div className="flex flex-col sm:flex-row justify-center items-stretch gap-4 max-w-md mx-auto w-full">
           <a href="#agente" className="flex-1 text-center bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition">Contactar</a>
           <a href="#inmuebles" className="flex-1 text-center px-6 py-3 rounded-full border border-black text-black font-medium hover:bg-gray-100 transition">Ver inmuebles</a>
         </div>
@@ -103,3 +103,4 @@ export default function Home() {
     </main>
   );
 }
+
