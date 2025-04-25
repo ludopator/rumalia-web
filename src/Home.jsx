@@ -110,6 +110,19 @@ export default function Home() {
         </p>
         <p>&copy; {new Date().getFullYear()} Rumalia</p>
       </footer>
-    </>
+    
+<a
+  href="https://wa.me/34661269186"
+  target="_blank"
+  rel="noopener noreferrer"
+  className="fixed bottom-20 right-4 bg-green-500 hover:bg-green-600 text-white w-12 h-12 rounded-full flex items-center justify-center shadow-lg z-50 md:hidden"
+  aria-label="Contactar por WhatsApp"
+>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" fill="currentColor" className="w-5 h-5">
+    <path d="M380.9 97.1C339 55.2 283.5 32 224.4 32c-105.9 0-192 86.1-192 192 0 33.7 8.8 66.5 25.5 95.5L32 480l165.5-25.8c27.7 15.1 58.8 23 91 23h.1c105.9 0 192-86.1 192-192 0-59.1-23.1-114.6-65.1-156.6zM224.4 438.5c-28.3 0-56.1-7.6-80.2-22l-5.7-3.4-98.2 15.3 15.7-95.5-3.7-5.9c-15.8-24.8-24.1-53.5-24.1-83 0-88.4 71.9-160.3 160.3-160.3 42.8 0 83 16.7 113.2 47 30.2 30.2 47 70.4 47 113.2 0 88.3-71.9 160.2-160.3 160.2z"/>
+  </svg>
+</a>
+
+</>
   );
 }
