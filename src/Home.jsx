@@ -57,11 +57,33 @@ export default function Home() {
         <section id="agente" className="py-12 px-6 max-w-2xl mx-auto">
           <h3 className="text-3xl font-semibold mb-4 text-center">Habla con un agente</h3>
           <p className="text-gray-700 mb-6 text-center">Rellena el formulario y te contactaremos lo antes posible.</p>
-          <form className="space-y-4">
-            <input type="text" placeholder="Nombre" className="w-full border px-4 py-2 rounded-xl" />
-            <input type="email" placeholder="Correo electrónico" className="w-full border px-4 py-2 rounded-xl" />
-            <input type="tel" placeholder="Teléfono" className="w-full border px-4 py-2 rounded-xl" />
-            <textarea placeholder="¿En qué podemos ayudarte?" className="w-full border px-4 py-2 rounded-xl" rows={4}></textarea>
+          <form
+            className="space-y-4"
+            onSubmit={async (e) => {
+              e.preventDefault();
+              const data = {
+                nombre: e.target.nombre.value,
+                email: e.target.email.value,
+                telefono: e.target.telefono.value,
+                mensaje: e.target.mensaje.value,
+              };
+              try {
+                await fetch("https://hook.eu1.make.com/8kbck0qr9g5f59vx2r32qs6sfiwryy3b", {
+                  method: "POST",
+                  headers: { "Content-Type": "application/json" },
+                  body: JSON.stringify(data),
+                });
+                alert("Mensaje enviado correctamente.");
+                e.target.reset();
+              } catch (error) {
+                alert("Error al enviar el mensaje. Inténtalo de nuevo.");
+              }
+            }}
+          >
+            <input name="nombre" type="text" placeholder="Nombre" className="w-full border px-4 py-2 rounded-xl" required />
+            <input name="email" type="email" placeholder="Correo electrónico" className="w-full border px-4 py-2 rounded-xl" required />
+            <input name="telefono" type="tel" placeholder="Teléfono" className="w-full border px-4 py-2 rounded-xl" />
+            <textarea name="mensaje" placeholder="¿En qué podemos ayudarte?" className="w-full border px-4 py-2 rounded-xl" rows={4}></textarea>
             <button className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition" type="submit">Enviar</button>
           </form>
         </section>
