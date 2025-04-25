@@ -51,7 +51,7 @@ export default function Home() {
   <div className="relative max-w-6xl mx-auto">
     <button
       onClick={() => document.getElementById('carousel').scrollBy({ left: -300, behavior: 'smooth' })}
-      className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-black text-white px-3 py-2 rounded-full shadow hover:bg-gray-800"
+      className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/60 text-black px-3 py-2 rounded-full shadow hover:bg-white/80 backdrop-blur-sm transition"
     >
       ◀
     </button>
@@ -80,7 +80,7 @@ export default function Home() {
         }
       ].map((piso, i) => (
         <div key={i} className="min-w-[80%] md:min-w-[30%] snap-start shrink-0 rounded-3xl overflow-hidden shadow bg-white">
-          <img src={piso.img} alt={piso.title} className="w-full h-56 object-cover" />
+          <img src={piso.img} alt={piso.title} className="w-full aspect-[3/2] object-contain" />
           <div className="p-5">
             <h4 className="text-lg font-semibold mb-1">{piso.title}</h4>
             <p className="text-sm text-gray-600 mb-2">{piso.details}</p>
@@ -91,7 +91,7 @@ export default function Home() {
     </div>
     <button
       onClick={() => document.getElementById('carousel').scrollBy({ left: 300, behavior: 'smooth' })}
-      className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-black text-white px-3 py-2 rounded-full shadow hover:bg-gray-800"
+      className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/60 text-black px-3 py-2 rounded-full shadow hover:bg-white/80 backdrop-blur-sm transition"
     >
       ▶
     </button>
