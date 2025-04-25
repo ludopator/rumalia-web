@@ -48,53 +48,36 @@ export default function Home() {
         
         <section id="inmuebles" className="py-12 px-6">
   <h3 className="text-3xl font-semibold mb-6 text-center">Inmuebles destacados</h3>
-  <div className="relative max-w-6xl mx-auto">
-    <button
-      onClick={() => document.getElementById('carousel').scrollBy({ left: -300, behavior: 'smooth' })}
-      className="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-white/60 text-black px-3 py-2 rounded-full shadow hover:bg-white/80 backdrop-blur-sm transition"
-    >
-      ◀
-    </button>
-    <div
-      id="carousel"
-      className="flex overflow-x-auto snap-x scroll-smooth gap-6 px-2"
-    >
-      {[
-        {
-          img: "/piso-chamberi.jpg",
-          title: "Piso en Chamberí",
-          details: "2 habitaciones · 1 baño · 74 m²",
-          price: "390.000 €"
-        },
-        {
-          img: "/piso-salamanca.jpg",
-          title: "Ático en Salamanca",
-          details: "3 habitaciones · 2 baños · 120 m²",
-          price: "720.000 €"
-        },
-        {
-          img: "/piso-tetuan.jpg",
-          title: "Estudio en Tetuán",
-          details: "1 habitación · 1 baño · 45 m²",
-          price: "195.000 €"
-        }
-      ].map((piso, i) => (
-        <div key={i} className="min-w-[80%] md:min-w-[30%] snap-start shrink-0 rounded-3xl overflow-hidden shadow bg-white">
-          <img src={piso.img} alt={piso.title} className="w-full aspect-[3/2] object-contain" />
-          <div className="p-5">
-            <h4 className="text-lg font-semibold mb-1">{piso.title}</h4>
-            <p className="text-sm text-gray-600 mb-2">{piso.details}</p>
-            <p className="text-base font-semibold">{piso.price}</p>
-          </div>
+  <div className="flex overflow-x-auto snap-x scroll-smooth gap-6 max-w-6xl mx-auto px-2">
+    {[
+      {
+        img: "/piso-chamberi.jpg",
+        title: "Piso en Chamberí",
+        details: "2 habitaciones · 1 baño · 74 m²",
+        price: "390.000 €"
+      },
+      {
+        img: "/piso-salamanca.jpg",
+        title: "Ático en Salamanca",
+        details: "3 habitaciones · 2 baños · 120 m²",
+        price: "720.000 €"
+      },
+      {
+        img: "/piso-tetuan.jpg",
+        title: "Estudio en Tetuán",
+        details: "1 habitación · 1 baño · 45 m²",
+        price: "195.000 €"
+      }
+    ].map((piso, i) => (
+      <div key={i} className="min-w-[80%] md:min-w-[30%] snap-start shrink-0 rounded-3xl overflow-hidden shadow bg-white">
+        <img src={piso.img} alt={piso.title} className="w-full h-56 object-cover" />
+        <div className="p-5">
+          <h4 className="text-lg font-semibold mb-1">{piso.title}</h4>
+          <p className="text-sm text-gray-600 mb-2">{piso.details}</p>
+          <p className="text-base font-semibold">{piso.price}</p>
         </div>
-      ))}
-    </div>
-    <button
-      onClick={() => document.getElementById('carousel').scrollBy({ left: 300, behavior: 'smooth' })}
-      className="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-white/60 text-black px-3 py-2 rounded-full shadow hover:bg-white/80 backdrop-blur-sm transition"
-    >
-      ▶
-    </button>
+      </div>
+    ))}
   </div>
 </section>
 
