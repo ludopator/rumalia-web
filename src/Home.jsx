@@ -70,7 +70,7 @@ export default function Home() {
       }
     ].map((piso, i) => (
       <div key={i} className="min-w-[80%] md:min-w-[30%] snap-start shrink-0 rounded-3xl overflow-hidden shadow bg-white">
-        <img src={piso.img} alt={piso.title} className="w-full h-56 object-cover" />
+        <img src={piso.img} alt={piso.title} className="w-full aspect-[4/3] object-cover rounded-t-3xl" />
         <div className="p-5">
           <h4 className="text-lg font-semibold mb-1">{piso.title}</h4>
           <p className="text-sm text-gray-600 mb-2">{piso.details}</p>
