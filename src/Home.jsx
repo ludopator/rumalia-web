@@ -40,12 +40,48 @@ export default function Home() {
             En Rumalia te ayudamos a vender o alquilar tu vivienda con atención personalizada.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto w-full">
-            <a href="#agente" className="flex-1 text-center bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">Contactar</a>
+            <a href="#agente" className="flex-1 text-center bg-green-500 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">Contactar</a>
             <a href="#inmuebles" className="flex-1 text-center border border-black text-black px-6 py-3 rounded-full hover:bg-gray-100 transition">Ver inmuebles</a>
           </div>
         </section>
 
-        <section id="agente" className="py-12 px-6 max-w-2xl mx-auto">
+        
+        <section id="inmuebles" className="py-12 px-6">
+          <h3 className="text-3xl font-semibold mb-6 text-center">Inmuebles destacados</h3>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+            {[
+              {
+                img: "/piso-chamberi.jpg",
+                title: "Piso en Chamberí",
+                details: "2 habitaciones · 1 baño · 74 m²",
+                price: "390.000 €"
+              },
+              {
+                img: "/piso-salamanca.jpg",
+                title: "Ático en Salamanca",
+                details: "3 habitaciones · 2 baños · 120 m²",
+                price: "720.000 €"
+              },
+              {
+                img: "/piso-tetuan.jpg",
+                title: "Estudio en Tetuán",
+                details: "1 habitación · 1 baño · 45 m²",
+                price: "195.000 €"
+              }
+            ].map((piso, i) => (
+              <div key={i} className="rounded-3xl overflow-hidden shadow bg-white">
+                <img src={piso.img} alt={piso.title} className="w-full h-56 object-cover" />
+                <div className="p-5">
+                  <h4 className="text-lg font-semibold mb-1">{piso.title}</h4>
+                  <p className="text-sm text-gray-600 mb-2">{piso.details}</p>
+                  <p className="text-base font-semibold">{piso.price}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+<section id="agente" className="py-12 px-6 max-w-2xl mx-auto">
           <h3 className="text-3xl font-semibold mb-4 text-center">Habla con un agente</h3>
           <p className="text-gray-700 mb-6 text-center">Rellena el formulario y te contactaremos lo antes posible.</p>
           <form className="space-y-4" onSubmit={handleSubmit}>
@@ -53,13 +89,14 @@ export default function Home() {
             <input name="email" type="email" placeholder="Correo electrónico" className="w-full border px-4 py-2 rounded-xl" required />
             <input name="telefono" type="tel" placeholder="Teléfono" className="w-full border px-4 py-2 rounded-xl" />
             <textarea name="mensaje" placeholder="¿En qué podemos ayudarte?" className="w-full border px-4 py-2 rounded-xl" rows={4}></textarea>
-            <button className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition" type="submit">Enviar</button>
+            <button className="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition" type="submit">Enviar</button>
           </form>
         </section>
       </main>
 
+      <div className={`fixed top-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-xl shadow z-50 transition-all duration-500 ease-in-out ${showSnackbar ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}>✉️ Tu mensaje ha sido enviado. Te contactaremos en breve.</div>
       {showSnackbar && (
-        <div className={`fixed top-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-xl shadow z-50 transition-opacity duration-500 ease-in-out ${showSnackbar ? "opacity-100" : "opacity-0"}`}>
+        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded-xl shadow z-50">
           ✉️ Tu mensaje ha sido enviado. Te contactaremos en breve.
         </div>
       )}
