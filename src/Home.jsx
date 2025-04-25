@@ -7,7 +7,7 @@ export default function Home() {
       elements.forEach((el, i) => {
         const top = el.getBoundingClientRect().top;
         const windowHeight = window.innerHeight;
-        if (top < windowHeight * 0.9) {
+        if (top < windowHeight) {
           el.style.transitionDelay = `${i * 100}ms`;
           el.classList.add('opacity-100', 'translate-y-0');
         }
@@ -63,7 +63,7 @@ export default function Home() {
           {inmuebles.map((piso, i) => (
             <div
               key={i}
-              className="rounded-3xl overflow-hidden shadow bg-white transform opacity-0 translate-y-6 transition-all duration-700 reveal"
+              className="rounded-3xl overflow-hidden shadow bg-white transform opacity-100 translate-y-0 transition-all duration-700"
             >
               <img src={piso.img} alt={piso.title} className="w-full h-56 object-cover" />
               <div className="p-5">
