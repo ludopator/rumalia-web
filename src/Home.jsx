@@ -101,7 +101,7 @@ export default function Home() {
 
 </main>
 
-      <div className={`fixed top-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-xl shadow z-50 transition-all duration-500 ease-in-out ${showSnackbar ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}>✉️ Tu mensaje ha sido enviado. Te contactaremos en breve.</div>
+      <div className={`fixed top-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-xl shadow z-50 transition-all duration-500 ease-in-out ${showSnackbar ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}></div>
       <footer className="text-sm text-gray-600 border-t mt-12 py-6 px-6 text-center bg-white">
         <p className="mb-2">
           <a href="/aviso-legal" className="hover:underline">Aviso Legal</a> |{" "}
