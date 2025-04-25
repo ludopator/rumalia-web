@@ -92,15 +92,16 @@ export default function Home() {
             <button className="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition" type="submit">Enviar</button>
           </form>
         </section>
-      </main>
+      
+{showSnackbar && (
+  <div className="fixed top-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-xl shadow z-50 transition-all duration-500 ease-in-out bg-green-500 text-white">
+    ✉️ Tu mensaje ha sido enviado. Te contactaremos en breve.
+  </div>
+)}
+
+</main>
 
       <div className={`fixed top-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-xl shadow z-50 transition-all duration-500 ease-in-out ${showSnackbar ? "opacity-100 scale-100" : "opacity-0 scale-95"}`}>✉️ Tu mensaje ha sido enviado. Te contactaremos en breve.</div>
-      {showSnackbar && (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 bg-green-500 text-white px-4 py-2 rounded-xl shadow z-50">
-          ✉️ Tu mensaje ha sido enviado. Te contactaremos en breve.
-        </div>
-      )}
-
       <footer className="text-sm text-gray-600 border-t mt-12 py-6 px-6 text-center bg-white">
         <p className="mb-2">
           <a href="/aviso-legal" className="hover:underline">Aviso Legal</a> |{" "}
