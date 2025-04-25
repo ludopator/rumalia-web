@@ -48,7 +48,7 @@ export default function Home() {
         
         <section id="inmuebles" className="py-12 px-6">
   <h3 className="text-3xl font-semibold mb-6 text-center">Inmuebles destacados</h3>
-  <div className="flex overflow-x-auto snap-x scroll-smooth gap-6 max-w-6xl mx-auto px-2">
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
     {[
       {
         img: "/piso-chamberi.jpg",
@@ -69,7 +69,7 @@ export default function Home() {
         price: "195.000 €"
       }
     ].map((piso, i) => (
-      <div key={i} className="min-w-[80%] md:min-w-[30%] snap-start shrink-0 rounded-3xl overflow-hidden shadow bg-white">
+      <div key={i} className="rounded-3xl overflow-hidden shadow bg-white">
         <img src={piso.img} alt={piso.title} className="w-full aspect-[4/3] object-cover rounded-t-3xl" />
         <div className="p-5">
           <h4 className="text-lg font-semibold mb-1">{piso.title}</h4>
