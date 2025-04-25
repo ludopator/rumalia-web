@@ -94,7 +94,7 @@ export default function Home() {
         </section>
       
 {showSnackbar && (
-  <div className="fixed top-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-xl shadow z-50 transition-all duration-500 ease-in-out bg-green-500 text-white">
+  <div className="fixed bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-xl shadow z-50 transition-all duration-500 ease-in-out bg-green-500 text-white">
     ✉️ Tu mensaje ha sido enviado. Te contactaremos en breve.
   </div>
 )}
