@@ -40,25 +40,25 @@ export default function Home() {
   ];
 
   return (
-    <main className="min-h-screen bg-[#f5f5f7] text-[#1d1d1f] font-sans">
-      <header className="p-5 flex items-center gap-2 shadow-sm bg-white">
+    <main className="min-h-screen bg-white text-black font-sans">
+      <header className="p-4 flex items-center gap-2 shadow-sm bg-white">
         <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-6 h-6" />
         <h1 className="text-xl font-semibold tracking-tight">Rumalia</h1>
       </header>
 
-      <section className="text-center py-24 px-6 transition-all duration-700 opacity-0 translate-y-6 reveal">
-        <h2 className="text-5xl font-bold mb-4 leading-tight">Conecta con tu agente inmobiliario en Madrid</h2>
-        <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-10">
+      <section className="text-center py-12 px-6 transition-all duration-700 opacity-0 translate-y-6 reveal">
+        <h2 className="text-4xl font-bold mb-4 leading-tight">Conecta con tu agente inmobiliario en Madrid</h2>
+        <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
           En Rumalia te ayudamos a vender o alquilar tu vivienda con atención personalizada, claridad y sin complicaciones.
         </p>
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 max-w-md mx-auto">
-          <a href="#agente" className="flex-1 text-center bg-[#0071e3] text-white px-6 py-3 rounded-full font-medium hover:bg-[#005bb5] transition">Contactar</a>
-          <a href="#inmuebles" className="flex-1 text-center px-6 py-3 rounded-full border border-[#0071e3] text-[#0071e3] font-medium hover:bg-[#e6f0fb] transition">Ver inmuebles</a>
+          <a href="#agente" className="flex-1 text-center bg-black text-white px-6 py-3 rounded-full font-medium hover:bg-gray-800 transition">Contactar</a>
+          <a href="#inmuebles" className="flex-1 text-center px-6 py-3 rounded-full border border-black text-black font-medium hover:bg-gray-100 transition">Ver inmuebles</a>
         </div>
       </section>
 
-      <section id="inmuebles" className="py-20 px-6">
-        <h3 className="text-3xl font-semibold mb-8 text-center">Inmuebles destacados</h3>
+      <section id="inmuebles" className="py-12 px-6">
+        <h3 className="text-3xl font-semibold mb-6 text-center">Inmuebles destacados</h3>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
           {inmuebles.map((piso, i) => (
             <div
@@ -76,7 +76,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="agente" className="py-20 px-6 max-w-2xl mx-auto transition-all duration-700 opacity-0 translate-y-6 reveal">
+      <section id="agente" className="py-12 px-6 max-w-2xl mx-auto transition-all duration-700 opacity-0 translate-y-6 reveal">
         <h3 className="text-3xl font-semibold mb-4 text-center">Habla con un agente</h3>
         <p className="text-gray-700 mb-6 text-center">Rellena el formulario y te contactaremos lo antes posible.</p>
         <form className="space-y-4">
@@ -84,11 +84,11 @@ export default function Home() {
           <input type="email" placeholder="Correo electrónico" className="w-full border px-4 py-2 rounded-xl" />
           <input type="tel" placeholder="Teléfono" className="w-full border px-4 py-2 rounded-xl" />
           <textarea placeholder="¿En qué podemos ayudarte?" className="w-full border px-4 py-2 rounded-xl" rows={4}></textarea>
-          <button className="bg-[#0071e3] text-white px-6 py-3 rounded-full hover:bg-[#005bb5] transition" type="submit">Enviar</button>
+          <button className="bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition" type="submit">Enviar</button>
         </form>
       </section>
 
-      <section id="legal" className="py-16 px-6 max-w-4xl mx-auto text-sm text-gray-500 transition-all duration-700 opacity-0 translate-y-6 reveal">
+      <section id="legal" className="py-12 px-6 max-w-4xl mx-auto text-sm text-gray-500 transition-all duration-700 opacity-0 translate-y-6 reveal">
         <h3 className="text-xl font-semibold mb-4">Textos legales</h3>
         <p className="mb-4">
           <strong>Aviso legal:</strong> Rumalia es una marca comercial registrada. Esta web tiene como finalidad la promoción de servicios inmobiliarios.
