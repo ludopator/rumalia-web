@@ -37,7 +37,7 @@ export default function Home() {
         <section className="text-center py-12 px-6">
           <h2 className="text-4xl font-bold mb-4">Conecta con tu agente inmobiliario en Madrid</h2>
           <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
-            En Rumalia te ayudamos a vender tu vivienda con atención personalizada.
+            En Rumalia te ayudamos a comprar o vender tu vivienda con atención personalizada.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto w-full">
             <a href="#agente" className="flex-1 text-center bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">Contactar</a>
