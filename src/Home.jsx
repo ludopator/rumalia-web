@@ -13,7 +13,7 @@ export default function Home() {
       mensaje: e.target.mensaje.value,
     };
     try {
-      await fetch("https://hook.eu1.make.com/8kbck0qr9g5f59vx2r32qs6sfiwryy3b", {
+      await fetch("https://rumalia.app.n8n.cloud/webhook-test/d367404b-6f53-4e08-a6b1-26ae176664fa", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),
