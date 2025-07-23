@@ -68,7 +68,10 @@ export default function Inmuebles() {
       <header className="border-b bg-white sticky top-0 z-40">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
           <div className="flex items-center space-x-8">
-            <h1 className="text-2xl font-bold">Rumalia</h1>
+            <div className="flex items-center gap-2">
+              <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-6 h-6" />
+              <h1 className="text-2xl font-bold">Rumalia</h1>
+            </div>
             <nav className="hidden md:flex space-x-6">
               <a href="/" className="text-gray-600 hover:text-black">Inicio</a>
               <span className="text-black font-semibold">Inmuebles</span>

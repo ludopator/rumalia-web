@@ -36,7 +36,10 @@ export default function Home() {
       {/* Header con navegación */}
       <header className="border-b bg-white sticky top-0 z-40">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <h1 className="text-2xl font-bold">Rumalia</h1>
+          <div className="flex items-center gap-2">
+            <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-6 h-6" />
+            <h1 className="text-2xl font-bold">Rumalia</h1>
+          </div>
 
           <nav className="flex items-center space-x-4">
             {user ? (
@@ -76,10 +79,6 @@ export default function Home() {
       </header>
 
       <main className="min-h-screen bg-white text-black font-sans">
-        <header className="p-4 flex items-center gap-2 shadow-sm bg-white">
-          <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-6 h-6" />
-          <h1 className="text-xl font-semibold tracking-tight">Rumalia</h1>
-        </header>
 
         <section className="text-center py-12 px-6">
           <h2 className="text-4xl font-bold mb-4">Conecta con tu agente inmobiliario en Madrid</h2>
