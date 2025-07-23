@@ -1,20 +1,17 @@
 import { useNavigate } from 'react-router-dom';
-import { useState, useEffect } from 'react';
+import { useAuth } from './AuthContext';
 
 export default function Inmuebles() {
   const navigate = useNavigate();
-  const [user, setUser] = useState(null);
+  const { currentUser, logout } = useAuth();
 
-  useEffect(() => {
-    const currentUser = localStorage.getItem('rumalia_current_user');
-    if (currentUser) {
-      setUser(JSON.parse(currentUser));
+  const handleLogout = async () => {
+    try {
+      await logout();
+      navigate('/');
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
     }
-  }, []);
-
-  const handleLogout = () => {
-    localStorage.removeItem('rumalia_current_user');
-    navigate('/');
   };
 
   const inmuebles = [
@@ -79,8 +76,8 @@ export default function Inmuebles() {
           </div>
 
           <div className="flex items-center space-x-4">
-            {user && (
-              <span className="text-sm text-gray-600">Hola, {user.email}</span>
+            {currentUser && (
+              <span className="text-sm text-gray-600">Hola, {currentUser.email}</span>
             )}
             <button
               onClick={handleLogout}
