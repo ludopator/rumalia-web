@@ -91,43 +91,7 @@ export default function Home() {
           </div>
         </section>
 
-
-        <section id="inmuebles" className="py-12 px-6">
-  <h3 className="text-3xl font-semibold mb-6 text-center">Inmuebles destacados</h3>
-  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-    {[
-      {
-        img: "/piso-chamberi.jpg",
-        title: "Piso en Chamberí",
-        details: "2 habitaciones · 1 baño · 74 m²",
-        price: "390.000 €"
-      },
-      {
-        img: "/piso-salamanca.jpg",
-        title: "Ático en Salamanca",
-        details: "3 habitaciones · 2 baños · 120 m²",
-        price: "720.000 €"
-      },
-      {
-        img: "/piso-tetuan.jpg",
-        title: "Estudio en Tetuán",
-        details: "1 habitación · 1 baño · 45 m²",
-        price: "195.000 €"
-      }
-    ].map((piso, i) => (
-      <div key={i} className="rounded-3xl overflow-hidden shadow bg-white">
-        <img src={piso.img} alt={piso.title} className="w-full aspect-[4/3] object-cover rounded-t-3xl" />
-        <div className="p-5">
-          <h4 className="text-lg font-semibold mb-1">{piso.title}</h4>
-          <p className="text-sm text-gray-600 mb-2">{piso.details}</p>
-          <p className="text-base font-semibold">{piso.price}</p>
-        </div>
-      </div>
-    ))}
-  </div>
-</section>
-
-<section id="agente" className="py-12 px-6 max-w-2xl mx-auto">
+        <section id="agente" className="py-12 px-6 max-w-2xl mx-auto">
           <h3 className="text-3xl font-semibold mb-4 text-center">Habla con un agente</h3>
           <p className="text-gray-700 mb-6 text-center">Rellena el formulario y te contactaremos lo antes posible.</p>
           <form className="space-y-4" onSubmit={handleSubmit}>
