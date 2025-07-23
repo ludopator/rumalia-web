@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 export default function Inmuebles() {
   const navigate = useNavigate();
   const [user, setUser] = useState(null);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   useEffect(() => {
     const currentUser = localStorage.getItem('rumalia_current_user');
@@ -67,12 +68,17 @@ export default function Inmuebles() {
       {/* Header */}
       <header className="border-b bg-white sticky top-0 z-40">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center space-x-8">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={() => setSidebarOpen(true)}
+              className="p-2 hover:bg-gray-100 rounded-lg mr-2"
+            >
+              <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
+            <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-6 h-6" />
             <h1 className="text-2xl font-bold">Rumalia</h1>
-            <nav className="hidden md:flex space-x-6">
-              <a href="/" className="text-gray-600 hover:text-black">Inicio</a>
-              <span className="text-black font-semibold">Inmuebles</span>
-            </nav>
           </div>
 
           <div className="flex items-center space-x-4">
@@ -88,6 +94,55 @@ export default function Inmuebles() {
           </div>
         </div>
       </header>
+
+      {/* Menú lateral */}
+      <>
+        <div 
+          className={`fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity ${sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
+          onClick={() => setSidebarOpen(false)}
+        />
+        <div className={`fixed left-0 top-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
+          <div className="p-6">
+            <div className="flex items-center justify-between mb-8">
+              <div className="flex items-center gap-2">
+                <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-6 h-6" />
+                <h2 className="text-xl font-bold">Rumalia</h2>
+              </div>
+              <button 
+                onClick={() => setSidebarOpen(false)}
+                className="p-1 hover:bg-gray-100 rounded"
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+            
+            <nav className="space-y-2">
+              <a 
+                href="/" 
+                className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg"
+                onClick={() => setSidebarOpen(false)}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
+                </svg>
+                Inicio
+              </a>
+              <a 
+                href="/inmuebles" 
+                className="flex items-center gap-3 px-4 py-3 text-gray-700 bg-gray-100 rounded-lg font-medium"
+                onClick={() => setSidebarOpen(false)}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                </svg>
+                Inmuebles
+              </a>
+            </nav>
+          </div>
+        </div>
+      </></header>
 
       {/* Contenido principal */}
       <section className="py-12 px-6">
