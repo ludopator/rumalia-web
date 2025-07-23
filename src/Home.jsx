@@ -1,9 +1,8 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 export default function Home() {
   const [showSnackbar, setShowSnackbar] = useState(false);
-  const [user, setUser] = useState(null);
-  const [sidebarOpen, setSidebarOpen] = useState(false);
+  const [user, setUser] = useState(null); // Assuming null means no user is logged in
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -27,17 +26,9 @@ export default function Home() {
     }
   };
 
-  useEffect(() => {
-    const currentUser = localStorage.getItem('rumalia_current_user');
-    if (currentUser) {
-      setUser(JSON.parse(currentUser));
-    }
-  }, []);
-
   const handleLogout = () => {
-    localStorage.removeItem('rumalia_current_user');
+    // Clear user data from localStorage or wherever it's stored
     setUser(null);
-    window.location.href = '/';
   };
 
   return (
@@ -45,25 +36,18 @@ export default function Home() {
       {/* Header con navegación */}
       <header className="border-b bg-white sticky top-0 z-40">
         <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
-          <div className="flex items-center gap-2">
-            {user && (
-              <button
-                onClick={() => setSidebarOpen(true)}
-                className="p-2 hover:bg-gray-100 rounded-lg mr-2"
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-                </svg>
-              </button>
-            )}
-            <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-6 h-6" />
-            <h1 className="text-2xl font-bold">Rumalia</h1>
-          </div>
+          <h1 className="text-2xl font-bold">Rumalia</h1>
 
           <nav className="flex items-center space-x-4">
             {user ? (
               <>
                 <span className="text-sm text-gray-600">Hola, {user.email}</span>
+                <a 
+                  href="/inmuebles" 
+                  className="text-sm text-gray-600 hover:text-black"
+                >
+                  Inmuebles
+                </a>
                 <button
                   onClick={handleLogout}
                   className="text-sm text-gray-600 hover:text-black border border-gray-300 px-3 py-1 rounded-full hover:border-black transition"
@@ -91,60 +75,12 @@ export default function Home() {
         </div>
       </header>
 
-      {/* Menú lateral */}
-      {user && (
-        <>
-          <div 
-            className={`fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity ${sidebarOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'}`}
-            onClick={() => setSidebarOpen(false)}
-          />
-          <div className={`fixed left-0 top-0 h-full w-64 bg-white shadow-lg z-50 transform transition-transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'}`}>
-            <div className="p-6">
-              <div className="flex items-center justify-between mb-8">
-                <div className="flex items-center gap-2">
-                  <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-6 h-6" />
-                  <h2 className="text-xl font-bold">Rumalia</h2>
-                </div>
-                <button 
-                  onClick={() => setSidebarOpen(false)}
-                  className="p-1 hover:bg-gray-100 rounded"
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
-                </button>
-              </div>
-              
-              <nav className="space-y-2">
-                <a 
-                  href="/" 
-                  className="flex items-center gap-3 px-4 py-3 text-gray-700 bg-gray-100 rounded-lg font-medium"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6" />
-                  </svg>
-                  Inicio
-                </a>
-                <a 
-                  href="/inmuebles" 
-                  className="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-gray-100 rounded-lg"
-                  onClick={() => setSidebarOpen(false)}
-                >
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                  Inmuebles
-                </a>
-              </nav>
-            </div>
-          </div>
-        </>
-      )}
-
-      </header>
-
       <main className="min-h-screen bg-white text-black font-sans">
+        <header className="p-4 flex items-center gap-2 shadow-sm bg-white">
+          <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-6 h-6" />
+          <h1 className="text-xl font-semibold tracking-tight">Rumalia</h1>
+        </header>
+
         <section className="text-center py-12 px-6">
           <h2 className="text-4xl font-bold mb-4">Conecta con tu agente inmobiliario en Madrid</h2>
           <p className="text-lg text-gray-700 max-w-2xl mx-auto mb-8">
@@ -152,9 +88,45 @@ export default function Home() {
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4 max-w-md mx-auto w-full">
             <a href="#agente" className="flex-1 text-center bg-black text-white px-6 py-3 rounded-full hover:bg-gray-800 transition">Contactar</a>
-            <a href="/inmuebles" className="flex-1 text-center border border-black text-black px-6 py-3 rounded-full hover:bg-gray-100 transition">Ver inmuebles</a>
+            <a href="#inmuebles" className="flex-1 text-center border border-black text-black px-6 py-3 rounded-full hover:bg-gray-100 transition">Ver inmuebles</a>
           </div>
         </section>
+
+
+        <section id="inmuebles" className="py-12 px-6">
+  <h3 className="text-3xl font-semibold mb-6 text-center">Inmuebles destacados</h3>
+  <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    {[
+      {
+        img: "/piso-chamberi.jpg",
+        title: "Piso en Chamberí",
+        details: "2 habitaciones · 1 baño · 74 m²",
+        price: "390.000 €"
+      },
+      {
+        img: "/piso-salamanca.jpg",
+        title: "Ático en Salamanca",
+        details: "3 habitaciones · 2 baños · 120 m²",
+        price: "720.000 €"
+      },
+      {
+        img: "/piso-tetuan.jpg",
+        title: "Estudio en Tetuán",
+        details: "1 habitación · 1 baño · 45 m²",
+        price: "195.000 €"
+      }
+    ].map((piso, i) => (
+      <div key={i} className="rounded-3xl overflow-hidden shadow bg-white">
+        <img src={piso.img} alt={piso.title} className="w-full aspect-[4/3] object-cover rounded-t-3xl" />
+        <div className="p-5">
+          <h4 className="text-lg font-semibold mb-1">{piso.title}</h4>
+          <p className="text-sm text-gray-600 mb-2">{piso.details}</p>
+          <p className="text-base font-semibold">{piso.price}</p>
+        </div>
+      </div>
+    ))}
+  </div>
+</section>
 
 <section id="agente" className="py-12 px-6 max-w-2xl mx-auto">
           <h3 className="text-3xl font-semibold mb-4 text-center">Habla con un agente</h3>
