@@ -1,4 +1,3 @@
-
 import { useNavigate } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 
@@ -75,7 +74,7 @@ export default function Inmuebles() {
               <span className="text-black font-semibold">Inmuebles</span>
             </nav>
           </div>
-          
+
           <div className="flex items-center space-x-4">
             {user && (
               <span className="text-sm text-gray-600">Hola, {user.email}</span>
