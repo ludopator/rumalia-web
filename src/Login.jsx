@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import { auth, googleProvider } from './firebaseConfig';
+import { auth, googleProvider, microsoftProvider } from './firebaseConfig';
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -63,6 +63,20 @@ export default function Login() {
       navigate(from, { replace: true });
     } catch (error) {
       setError('Error al iniciar sesión con Google: ' + error.message);
+    }
+    
+    setLoading(false);
+  };
+
+  const handleMicrosoftLogin = async () => {
+    setError('');
+    setLoading(true);
+
+    try {
+      await signInWithPopup(auth, microsoftProvider);
+      navigate(from, { replace: true });
+    } catch (error) {
+      setError('Error al iniciar sesión con Microsoft: ' + error.message);
     }
     
     setLoading(false);
@@ -130,6 +144,20 @@ export default function Login() {
             <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
           </svg>
           <span>Iniciar sesión con Google</span>
+        </button>
+
+        <button
+          onClick={handleMicrosoftLogin}
+          disabled={loading}
+          className="w-full border border-gray-300 text-gray-700 px-6 py-3 rounded-full hover:bg-gray-50 transition disabled:opacity-50 flex items-center justify-center space-x-2 mt-3"
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24">
+            <path fill="#F25022" d="M11.4 11.4H0V0h11.4v11.4z"/>
+            <path fill="#00A4EF" d="M24 11.4H12.6V0H24v11.4z"/>
+            <path fill="#7FBA00" d="M11.4 24H0V12.6h11.4V24z"/>
+            <path fill="#FFB900" d="M24 24H12.6V12.6H24V24z"/>
+          </svg>
+          <span>Iniciar sesión con Microsoft</span>
         </button>
 
         <div className="text-center mt-6">
