@@ -140,7 +140,9 @@ export default function Home() {
             </div>
           </div>
         </>
-      )}</header>
+      )}
+
+      </header>
 
       <main className="min-h-screen bg-white text-black font-sans">
         <section className="text-center py-12 px-6">

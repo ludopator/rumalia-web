@@ -142,7 +142,9 @@ export default function Inmuebles() {
             </nav>
           </div>
         </div>
-      </></header>
+      </>
+
+      </header>
 
       {/* Contenido principal */}
       <section className="py-12 px-6">
