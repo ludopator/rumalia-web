@@ -1,8 +1,8 @@
-
 import { useState } from 'react';
 
 export default function Home() {
   const [showSnackbar, setShowSnackbar] = useState(false);
+  const [user, setUser] = useState(null); // Assuming null means no user is logged in
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -26,8 +26,55 @@ export default function Home() {
     }
   };
 
+  const handleLogout = () => {
+    // Clear user data from localStorage or wherever it's stored
+    setUser(null);
+  };
+
   return (
     <>
+      {/* Header con navegación */}
+      <header className="border-b bg-white sticky top-0 z-40">
+        <div className="max-w-6xl mx-auto px-6 py-4 flex justify-between items-center">
+          <h1 className="text-2xl font-bold">Rumalia</h1>
+
+          <nav className="flex items-center space-x-4">
+            {user ? (
+              <>
+                <span className="text-sm text-gray-600">Hola, {user.email}</span>
+                <a 
+                  href="/inmuebles" 
+                  className="text-sm text-gray-600 hover:text-black"
+                >
+                  Inmuebles
+                </a>
+                <button
+                  onClick={handleLogout}
+                  className="text-sm text-gray-600 hover:text-black border border-gray-300 px-3 py-1 rounded-full hover:border-black transition"
+                >
+                  Cerrar sesión
+                </button>
+              </>
+            ) : (
+              <>
+                <a 
+                  href="/login" 
+                  className="text-sm text-gray-600 hover:text-black"
+                >
+                  Iniciar sesión
+                </a>
+                <a 
+                  href="/registro" 
+                  className="text-sm bg-black text-white px-4 py-2 rounded-full hover:bg-gray-800 transition"
+                >
+                  Registrarse
+                </a>
+              </>
+            )}
+          </nav>
+        </div>
+      </header>
+
       <main className="min-h-screen bg-white text-black font-sans">
         <header className="p-4 flex items-center gap-2 shadow-sm bg-white">
           <img src="/icon-rumalia.png" alt="Rumalia icon" className="w-6 h-6" />
@@ -45,7 +92,7 @@ export default function Home() {
           </div>
         </section>
 
-        
+
         <section id="inmuebles" className="py-12 px-6">
   <h3 className="text-3xl font-semibold mb-6 text-center">Inmuebles destacados</h3>
   <div className="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -92,7 +139,7 @@ export default function Home() {
             <button className="bg-green-500 text-white px-6 py-3 rounded-full hover:bg-gray-800 transition" type="submit">Enviar</button>
           </form>
         </section>
-      
+
 {showSnackbar && (
   <div className="fixed bottom-4 left-1/2 -translate-x-1/2 px-4 py-2 rounded-xl shadow z-50 transition-all duration-500 ease-in-out bg-green-500 text-white">
     ✉️ Tu mensaje ha sido enviado. Te contactaremos en breve.
@@ -110,7 +157,7 @@ export default function Home() {
         </p>
         <p>&copy; {new Date().getFullYear()} Rumalia</p>
       </footer>
-    
+
 <a
   href="https://wa.me/34644494617"
   target="_blank"
