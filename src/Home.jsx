@@ -1,11 +1,8 @@
 import { useState } from 'react';
-import { useAuth } from './AuthContext';
-import { useNavigate } from 'react-router-dom';
 
 export default function Home() {
   const [showSnackbar, setShowSnackbar] = useState(false);
-  const { currentUser, logout } = useAuth();
-  const navigate = useNavigate();
+  const [user, setUser] = useState(null); // Assuming null means no user is logged in
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -29,13 +26,9 @@ export default function Home() {
     }
   };
 
-  const handleLogout = async () => {
-    try {
-      await logout();
-      navigate('/');
-    } catch (error) {
-      console.error('Error al cerrar sesión:', error);
-    }
+  const handleLogout = () => {
+    // Clear user data from localStorage or wherever it's stored
+    setUser(null);
   };
 
   return (
@@ -49,9 +42,9 @@ export default function Home() {
           </div>
 
           <nav className="flex items-center space-x-4">
-            {currentUser ? (
+            {user ? (
               <>
-                <span className="text-sm text-gray-600">Hola, {currentUser.email}</span>
+                <span className="text-sm text-gray-600">Hola, {user.email}</span>
                 <a 
                   href="/inmuebles" 
                   className="text-sm text-gray-600 hover:text-black"
