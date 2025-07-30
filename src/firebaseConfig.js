@@ -21,10 +21,21 @@ const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
 export const googleProvider = new GoogleAuthProvider();
 export const microsoftProvider = new OAuthProvider('microsoft.com');
+export const yahooProvider = new OAuthProvider('yahoo.com');
+export const appleProvider = new OAuthProvider('apple.com');
 
 // Configurar los scopes de Microsoft
 microsoftProvider.addScope('openid');
 microsoftProvider.addScope('email');
 microsoftProvider.addScope('profile');
+
+// Configurar los scopes de Yahoo
+yahooProvider.addScope('openid');
+yahooProvider.addScope('email');
+yahooProvider.addScope('profile');
+
+// Configurar los scopes de Apple
+appleProvider.addScope('email');
+appleProvider.addScope('name');
 
 export default app;

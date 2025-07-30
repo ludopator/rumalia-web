@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { createUserWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
-import { auth, googleProvider, microsoftProvider } from './firebaseConfig';
+import { auth, googleProvider, microsoftProvider, yahooProvider, appleProvider } from './firebaseConfig';
 
 export default function Registro() {
   const [formData, setFormData] = useState({
@@ -100,6 +100,34 @@ export default function Registro() {
     setLoading(false);
   };
 
+  const handleYahooSignup = async () => {
+    setError('');
+    setLoading(true);
+
+    try {
+      await signInWithPopup(auth, yahooProvider);
+      navigate('/inmuebles');
+    } catch (error) {
+      setError('Error al registrarse con Yahoo: ' + error.message);
+    }
+    
+    setLoading(false);
+  };
+
+  const handleAppleSignup = async () => {
+    setError('');
+    setLoading(true);
+
+    try {
+      await signInWithPopup(auth, appleProvider);
+      navigate('/inmuebles');
+    } catch (error) {
+      setError('Error al registrarse con Apple: ' + error.message);
+    }
+    
+    setLoading(false);
+  };
+
   return (
     <main className="min-h-screen bg-white flex items-center justify-center px-6">
       <div className="max-w-md w-full">
@@ -186,6 +214,28 @@ export default function Registro() {
             <path fill="#FFB900" d="M24 24H12.6V12.6H24V24z"/>
           </svg>
           <span>Registrarse con Microsoft</span>
+        </button>
+
+        <button
+          onClick={handleYahooSignup}
+          disabled={loading}
+          className="w-full border border-gray-300 text-gray-700 px-6 py-3 rounded-full hover:bg-gray-50 transition disabled:opacity-50 flex items-center justify-center space-x-2 mt-3"
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24">
+            <path fill="#720E9E" d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.568 7.178l-2.24 2.652c.402.402.64.954.64 1.563 0 1.225-.992 2.217-2.217 2.217s-2.217-.992-2.217-2.217c0-.609.238-1.161.64-1.563l-2.24-2.652c-.238.238-.476.476-.595.834-.238.715-.238 1.43 0 2.145.119.358.357.596.595.834l2.24-2.652c-.402-.402-.64-.954-.64-1.563 0-1.225.992-2.217 2.217-2.217s2.217.992 2.217 2.217c0 .609-.238 1.161-.64 1.563l2.24 2.652c.238-.238.476-.476.595-.834.238-.715.238-1.43 0-2.145-.119-.358-.357-.596-.595-.834z"/>
+          </svg>
+          <span>Registrarse con Yahoo</span>
+        </button>
+
+        <button
+          onClick={handleAppleSignup}
+          disabled={loading}
+          className="w-full border border-gray-300 text-gray-700 px-6 py-3 rounded-full hover:bg-gray-50 transition disabled:opacity-50 flex items-center justify-center space-x-2 mt-3"
+        >
+          <svg className="w-5 h-5" viewBox="0 0 24 24">
+            <path fill="#000000" d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+          </svg>
+          <span>Registrarse con Apple</span>
         </button>
 
         <div className="text-center mt-6">
