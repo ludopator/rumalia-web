@@ -3,6 +3,7 @@ import { useState } from 'react';
 import { useNavigate, Link, useLocation } from 'react-router-dom';
 import { signInWithEmailAndPassword, signInWithPopup } from 'firebase/auth';
 import { auth, googleProvider, microsoftProvider, yahooProvider, appleProvider } from './firebaseConfig';
+import TwoFactorModal from './TwoFactorModal';
 
 export default function Login() {
   const [formData, setFormData] = useState({
@@ -11,10 +12,39 @@ export default function Login() {
   });
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
+  const [showTwoFactor, setShowTwoFactor] = useState(false);
+  const [pendingUser, setPendingUser] = useState(null);
   const navigate = useNavigate();
   const location = useLocation();
 
   const from = location.state?.from?.pathname || '/inmuebles';
+
+  const handleTwoFactorSubmit = (code) => {
+    // Por ahora aceptamos cualquier código
+    if (pendingUser) {
+      if (pendingUser.provider === 'local') {
+        localStorage.setItem('rumalia_current_user', JSON.stringify({
+          id: pendingUser.uid,
+          email: pendingUser.email,
+          provider: 'local'
+        }));
+      }
+      // Para usuarios de Firebase, el AuthContext ya maneja la sesión
+      setShowTwoFactor(false);
+      setPendingUser(null);
+      navigate(from, { replace: true });
+    }
+  };
+
+  const handleTwoFactorCancel = () => {
+    // Si cancela, cerrar sesión si es de Firebase
+    if (pendingUser && pendingUser.provider !== 'local') {
+      auth.signOut();
+    }
+    setShowTwoFactor(false);
+    setPendingUser(null);
+    setError('Verificación cancelada');
+  };
 
   const handleChange = (e) => {
     setFormData({
@@ -30,8 +60,11 @@ export default function Login() {
 
     try {
       // Primero intentar con Firebase Auth
-      await signInWithEmailAndPassword(auth, formData.email, formData.password);
-      navigate(from, { replace: true });
+      const userCredential = await signInWithEmailAndPassword(auth, formData.email, formData.password);
+      // Mostrar modal de 2FA antes de completar el login
+      setPendingUser(userCredential.user);
+      setShowTwoFactor(true);
+      setLoading(false);
     } catch (firebaseError) {
       // Si falla Firebase, intentar con el sistema local como fallback
       const existingUsers = JSON.parse(localStorage.getItem('rumalia_users') || '[]');
@@ -41,17 +74,14 @@ export default function Login() {
 
       if (!user) {
         setError('Email o contraseña incorrectos');
+        setLoading(false);
       } else {
-        localStorage.setItem('rumalia_current_user', JSON.stringify({
-          id: user.id,
-          email: user.email,
-          provider: 'local'
-        }));
-        navigate(from, { replace: true });
+        // Mostrar modal de 2FA para usuarios locales también
+        setPendingUser({ email: user.email, uid: user.id, provider: 'local' });
+        setShowTwoFactor(true);
+        setLoading(false);
       }
     }
-    
-    setLoading(false);
   };
 
   const handleGoogleLogin = async () => {
@@ -59,13 +89,14 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await signInWithPopup(auth, googleProvider);
-      navigate(from, { replace: true });
+      const result = await signInWithPopup(auth, googleProvider);
+      setPendingUser(result.user);
+      setShowTwoFactor(true);
+      setLoading(false);
     } catch (error) {
       setError('Error al iniciar sesión con Google: ' + error.message);
+      setLoading(false);
     }
-    
-    setLoading(false);
   };
 
   const handleMicrosoftLogin = async () => {
@@ -73,13 +104,14 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await signInWithPopup(auth, microsoftProvider);
-      navigate(from, { replace: true });
+      const result = await signInWithPopup(auth, microsoftProvider);
+      setPendingUser(result.user);
+      setShowTwoFactor(true);
+      setLoading(false);
     } catch (error) {
       setError('Error al iniciar sesión con Microsoft: ' + error.message);
+      setLoading(false);
     }
-    
-    setLoading(false);
   };
 
   const handleYahooLogin = async () => {
@@ -87,13 +119,14 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await signInWithPopup(auth, yahooProvider);
-      navigate(from, { replace: true });
+      const result = await signInWithPopup(auth, yahooProvider);
+      setPendingUser(result.user);
+      setShowTwoFactor(true);
+      setLoading(false);
     } catch (error) {
       setError('Error al iniciar sesión con Yahoo: ' + error.message);
+      setLoading(false);
     }
-    
-    setLoading(false);
   };
 
   const handleAppleLogin = async () => {
@@ -101,13 +134,14 @@ export default function Login() {
     setLoading(true);
 
     try {
-      await signInWithPopup(auth, appleProvider);
-      navigate(from, { replace: true });
+      const result = await signInWithPopup(auth, appleProvider);
+      setPendingUser(result.user);
+      setShowTwoFactor(true);
+      setLoading(false);
     } catch (error) {
       setError('Error al iniciar sesión con Apple: ' + error.message);
+      setLoading(false);
     }
-    
-    setLoading(false);
   };
 
   return (
@@ -227,6 +261,13 @@ export default function Login() {
           </Link>
         </div>
       </div>
+
+      <TwoFactorModal
+        isOpen={showTwoFactor}
+        onSubmit={handleTwoFactorSubmit}
+        onCancel={handleTwoFactorCancel}
+        userEmail={pendingUser?.email || ''}
+      />
     </main>
   );
 }
